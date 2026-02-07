@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ram Nikhil Teja | SYSTEM.ROOT</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Sci-Fi Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-void: #020410;
+        --color-cyan: #00f3ff;
+        --color-cyan-glow: rgba(0, 243, 255, 0.3);
+        --color-pink: #ff0099;
+        --color-green: #00ff66;
+        --color-glass: rgba(10, 15, 30, 0.7);
+        
+        --font-head: 'Orbitron', sans-serif;
+        --font-body: 'Rajdhani', sans-serif;
+        --font-mono: 'Share Tech Mono', monospace;
+        
+        --shadow-neon-cyan: 0 0 10px #00f3ff, 0 0 20px rgba(0, 243, 255, 0.3);
+        --shadow-neon-pink: 0 0 10px #ff0099;
+      }
+      
+      /* Essential Custom Styles/Animations */
+      .clip-path-polygon {
+          clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      }
+      .scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 50%);
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 999;
+        opacity: 0.3;
+      }
+      .glitch-text {
+        position: relative;
+      }
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-void);
+      }
+      .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 var(--color-pink);
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+      }
+      .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 var(--color-cyan);
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim2 5s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-anim {
+        0% { clip: rect(10px, 9999px, 30px, 0); }
+        20% { clip: rect(60px, 9999px, 85px, 0); }
+        40% { clip: rect(20px, 9999px, 55px, 0); }
+        60% { clip: rect(80px, 9999px, 100px, 0); }
+        80% { clip: rect(30px, 9999px, 50px, 0); }
+        100% { clip: rect(10px, 9999px, 80px, 0); }
+      }
+      @keyframes glitch-anim2 {
+        0% { clip: rect(80px, 9999px, 100px, 0); }
+        20% { clip: rect(20px, 9999px, 50px, 0); }
+        40% { clip: rect(60px, 9999px, 90px, 0); }
+        60% { clip: rect(10px, 9999px, 40px, 0); }
+        80% { clip: rect(50px, 9999px, 70px, 0); }
+        100% { clip: rect(30px, 9999px, 60px, 0); }
+      }
+    </style>
+    
+    <!-- Dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> 
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-void text-gray-300 overflow-x-hidden selection:bg-cyan selection:text-black">
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed top-0 left-0 w-4 h-4 border border-cyan rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ease-out hidden md:block"></div>
+    <div id="cursor-follower" class="fixed top-0 left-0 w-8 h-8 border border-pink/50 rounded-full pointer-events-none z-[9998] mix-blend-difference transition-transform duration-300 ease-out hidden md:block"></div>
+
+    <!-- System Boot Screen -->
+    <div id="system-boot" class="fixed inset-0 bg-void z-[10000] flex flex-col items-center justify-center font-mono text-cyan p-10 cursor-none select-none">
+        <div class="max-w-2xl w-full">
+            <div id="boot-text" class="space-y-2 text-sm md:text-base opacity-80 h-64 overflow-hidden relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-12 after:bg-gradient-to-t after:from-void after:to-transparent"></div>
+            <div class="mt-8 h-1 w-full bg-white/10 rounded overflow-hidden relative">
+                <div id="boot-progress" class="h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-200 ease-out"></div>
+            </div>
+            <div class="mt-2 flex justify-between text-xs text-gray-500">
+                <span class="animate-pulse">SYSTEM_CHECK: <span class="text-green">PASS</span></span>
+                <span id="boot-percent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper to fade in -->
+    <div id="main-interface" class="opacity-0 transition-opacity duration-1000">
+
+    <canvas id="bgCanvas" class="fixed inset-0 z-0 opacity-40"></canvas>
+    <div class="scanlines"></div>
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full h-20 bg-[rgba(2,4,16,0.9)] backdrop-blur-md border-b border-cyan/30 z-50 shadow-neon-cyan">
+        <div class="container mx-auto h-full flex justify-between items-center px-6">
+            <!-- Logo -->
+            <a href="#" class="font-head text-2xl tracking-widest text-white group flex items-center gap-2">
+                <i data-lucide="cpu" class="text-cyan group-hover:rotate-180 transition-transform duration-700"></i>
+                <span class="group-hover:text-cyan transition-colors">RN_DEV</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-8">
+                <a href="#about" class="font-mono text-sm text-gray-400 hover:text-cyan tracking-widest relative group transition-colors">
+                    <span class="absolute -left-3 opacity-0 group-hover:opacity-100 transition-opacity text-cyan">></span> 
+                    ABOUT_
+                </a>
+                <a href="#experience" class="font-mono text-sm text-gray-400 hover:text-pink tracking-widest relative group transition-colors">
+                    <span class="absolute -left-3 opacity-0 group-hover:opacity-100 transition-opacity text-pink">></span> 
+                    MISSIONS_
+                </a>
+                <a href="#projects" class="font-mono text-sm text-gray-400 hover:text-green tracking-widest relative group transition-colors">
+                    <span class="absolute -left-3 opacity-0 group-hover:opacity-100 transition-opacity text-green">></span> 
+                    MODULES_
+                </a>
+                <a href="Ram_Nikhil_Resume.pdf" target="_blank" class="font-mono text-sm text-gray-400 hover:text-cyan tracking-widest relative group transition-colors">
+                    <span class="absolute -left-3 opacity-0 group-hover:opacity-100 transition-opacity text-cyan">></span> 
+                    RESUME_FILE
+                </a>
+                <a href="#contact" class="font-mono text-sm text-cyan border border-cyan/50 px-4 py-1 hover:bg-cyan/10 hover:shadow-neon-cyan transition-all clip-path-polygon">
+                    INIT_UPLINK
+                </a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-cyan p-2 border border-cyan/30 hover:bg-cyan/10 transition-colors">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobileNav" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8">
+        <button id="closeMobileBtn" class="absolute top-6 right-6 text-white hover:text-cyan transition-colors">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#about" class="mobile-link font-head text-2xl text-white hover:text-cyan tracking-wider">ABOUT_SYSTEM</a>
+        <a href="#experience" class="mobile-link font-head text-2xl text-white hover:text-pink tracking-wider">PRIOR_MISSIONS</a>
+        <a href="#projects" class="mobile-link font-head text-2xl text-white hover:text-green tracking-wider">ACTIVE_MODULES</a>
+        <a href="#contact" class="mobile-link font-head text-2xl text-cyan border-b-2 border-cyan pb-1">ESTABLISH_UPLINK</a>
+        <a href="Ram_Nikhil_Resume.pdf" target="_blank" class="mobile-link font-head text-2xl text-gray-400 hover:text-white tracking-wider animate-pulse">VIEW_RESUME</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative w-full overflow-hidden">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="relative w-full min-h-screen flex items-center pt-20">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan/10 rounded-full blur-[100px] animate-pulse"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 flex flex-col gap-6">
+                    <div class="inline-flex items-center gap-2 font-mono text-cyan text-sm tracking-[0.2em] border border-cyan/30 px-3 py-1 w-fit bg-cyan/5">
+                        <span class="w-2 h-2 bg-green rounded-full animate-pulse shadow-[0_0_5px_#00ff66]"></span>
+                        SYSTEM_ONLINE
+                    </div>
+                    
+                    <h1 class="font-head text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight drop-shadow-neon-cyan relative z-20">
+                        <span class="glitch-text block" data-text="RAM">RAM</span>
+                        <span class="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan to-blue-600 block" data-text="NIKHIL">NIKHIL</span>
+                    </h1>
+                    
+                    <div class="h-16 flex items-center">
+                        <span id="typed-output" class="font-mono text-xl md:text-2xl text-pink drop-shadow-neon-pink"></span>
+                    </div>
+
+                    <p class="font-body text-gray-400 text-lg max-w-lg leading-relaxed border-l-2 border-white/20 pl-4">
+                        Executing high-performance frontend architecture. 
+                        Specializing in <span class="text-cyan">React</span> ecosystems and immersive UI paradigms.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="px-8 py-3 bg-cyan text-black font-head font-bold hover:bg-white hover:shadow-neon-cyan transition-all clip-path-polygon">
+                            VIEW_MODULES
+                        </a>
+                        <a href="#contact" class="px-8 py-3 bg-transparent border border-cyan text-cyan font-head font-bold hover:bg-cyan/10 hover:shadow-neon-cyan transition-all clip-path-polygon">
+                            CONTACT_
+                        </a>
+                        <a href="Ram_Nikhil_Resume.pdf" target="_blank" class="px-8 py-3 bg-pink/10 border border-pink text-pink font-head font-bold hover:bg-pink/20 hover:shadow-neon-pink transition-all clip-path-polygon flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> RESUME_FILE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual/Graphic -->
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                    <!-- Circle Graphic -->
+                    <!-- Circle Graphic -->
+                     <div class="w-64 h-64 md:w-80 md:h-80 flex justify-center items-center relative">
+                        <!-- Spinning Rings -->
+                        <div class="absolute inset-0 border-2 border-white/10 rounded-full animate-[spin_10s_linear_infinite]">
+                            <div class="absolute inset-0 border-t-2 border-cyan rounded-full"></div>
+                            <div class="absolute inset-4 border-b-2 border-pink rounded-full animate-[spin_5s_linear_infinite_reverse]"></div>
+                        </div>
+                        
+                        <!-- Profile/Avatar Placeholder -->
+                        <div class="w-48 h-48 md:w-60 md:h-60 rounded-full bg-black/50 border border-white/20 backdrop-blur-sm overflow-hidden flex items-center justify-center relative z-20 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
+                             <img src="avatar_cyberpunk.png" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cyan opacity-60 hover:opacity-100 transition-opacity animate-bounce cursor-pointer">
+                <span class="font-mono text-xs tracking-widest">SCROLL_DOWN</span>
+                <i data-lucide="chevrons-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="min-h-screen py-24 flex items-center bg-black/20">
+            <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Info Panel -->
+                <div class="relative p-8 border border-white/10 bg-white/5 backdrop-blur-sm group hover:border-cyan/50 transition-colors duration-500">
+                    <!-- Decor Corners -->
+                    <div class="absolute top-0 left-0 w-2 h-2 bg-cyan shadow-neon-cyan"></div>
+                    <div class="absolute top-0 right-0 w-2 h-2 bg-cyan shadow-neon-cyan"></div>
+                    <div class="absolute bottom-0 left-0 w-2 h-2 bg-pink shadow-neon-pink"></div>
+                    <div class="absolute bottom-0 right-0 w-2 h-2 bg-pink shadow-neon-pink"></div>
+
+                    <h2 class="font-head text-3xl text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="terminal" class="text-pink"></i> 
+                        SYSTEM_ID: <span class="text-gray-400">RAM_NIKHIL</span>
+                    </h2>
+                    
+                    <div class="space-y-4 font-mono text-gray-300 leading-relaxed text-sm md:text-base">
+                        <p>
+                            <span class="text-cyan">>></span> INITIATING BIO_SCAN...
+                        </p>
+                        <p>
+                             Full-stack operative with a focus on scalable architecture. 
+                             My core directive is to build interfaces that merge 
+                             <span class="text-white bg-pink/20 px-1">aesthetic excellence</span> with 
+                             <span class="text-white bg-green/20 px-1">raw performance</span>.
+                        </p>
+                        <p>
+                             <strong class="text-white">EDUCATION:</strong> B.Tech in CSE from <span class="text-cyan">Rajiv Gandhi University of Knowledge Technologies</span> (2020-2024).
+                        </p>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs text-gray-500 font-bold tracking-widest">CURRENT_STATUS</span>
+                            <span class="text-green font-mono flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green rounded-full animate-pulse"></span> ONLINE
+                            </span>
+                        </div>
+                        <div class="flex flex-col gap-1 border-l border-white/10 pl-4">
+                            <span class="text-xs text-gray-500 font-bold tracking-widest">LOCATION</span>
+                            <span class="text-white font-mono">HYDERABAD_IN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Cloud (Visual) -->
+                <div class="hidden md:flex flex-wrap gap-4 justify-center content-center opacity-80">
+                    <span class="font-mono text-cyan border border-cyan px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0s]">React.js</span>
+                    <span class="font-mono text-blue-400 border border-blue-400 px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.2s]">TypeScript</span>
+                    <span class="font-mono text-pink border border-pink px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.4s]">Tailwind_CSS</span>
+                    <span class="font-mono text-yellow-400 border border-yellow-400 px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.6s]">TanStack</span>
+                    <span class="font-mono text-green border border-green px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.8s]">Node.js</span>
+                    <span class="font-mono text-purple-400 border border-purple-400 px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:1s]">SQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="min-h-screen py-24 flex flex-col justify-center relative">
+            <div class="container mx-auto px-6 max-w-4xl">
+                 <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-20 flex items-center justify-center gap-4 drop-shadow-neon-pink">
+                    <span class="h-0.5 w-12 bg-pink shadow-neon-pink hidden md:block"></span> PAST_MISSIONS <span class="h-0.5 w-12 bg-pink shadow-neon-pink hidden md:block"></span>
+                </h2>
+
+                <div class="border-l-2 border-white/10 ml-0 md:ml-10 pl-8 md:pl-12 space-y-16 relative">
+                    <!-- Job 1 -->
+                    <div class="relative group">
+                        <!-- Marker -->
+                        <div class="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 bg-void border-2 border-cyan rotate-45 group-hover:bg-cyan group-hover:scale-125 transition-all duration-300 shadow-neon-cyan z-10"></div>
+                        
+                        <span class="font-mono text-pink text-sm absolute -top-8 left-0 md:static md:float-right md:text-right mb-2 block">NOV 2024 - PRESENT</span>
+                        
+                        <div class="bg-white/5 border border-white/5 p-6 md:p-8 rounded-sm hover:border-cyan/30 transition-colors">
+                            <h3 class="font-head text-2xl text-white mb-2 group-hover:text-cyan transition-colors">FRONTEND_DEVELOPER</h3>
+                            <div class="text-green font-mono text-sm mb-4 tracking-wider">AT: ACTANÓS</div>
+                            <p class="font-mono text-gray-400 mb-6 leading-relaxed">
+                                Developed production applications using React, TypeScript, and TanStack ecosystem for legal tech and CRM domains.
+                            </p>
+                            <ul class="space-y-3 font-mono text-sm text-gray-500">
+                                <li class="pl-4 relative before:content-['>'] before:text-pink before:absolute before:left-0">Built dynamic form & email template builders with drag-and-drop.</li>
+                                <li class="pl-4 relative before:content-['>'] before:text-pink before:absolute before:left-0">Implemented CSV bulk import (PapaParse) & document editors.</li>
+                                <li class="pl-4 relative before:content-['>'] before:text-pink before:absolute before:left-0">Utilized TanStack Query, Router, and Table for efficient state.</li>
+                                <li class="pl-4 relative before:content-['>'] before:text-pink before:absolute before:left-0">Engineered automatic workflow progression & company website.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="min-h-screen py-24 flex flex-col justify-center relative">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-12 bg-cyan shadow-neon-cyan"></span> ACTIVE_MODULES <span class="h-0.5 w-12 bg-cyan shadow-neon-cyan"></span>
+                </h2>
+
+                <!-- Swiper Carousel Wrapper -->
+                <div class="swiper mySwiper w-full pb-12 pt-5">
+                    <div class="swiper-wrapper">
+                        <!-- Project 1 -->
+                        <div class="swiper-slide h-auto">
+                            <div class="cyber-card group h-full bg-white/5 border border-white/10 hover:border-cyan hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden clip-path-polygon">
+                                <div class="card-img h-48 bg-black/30 flex justify-center items-center relative group-hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="layout-template" class="w-16 h-16 text-white/20 group-hover:text-cyan group-hover:drop-shadow-neon-cyan transition-all duration-300"></i>
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-head text-white text-xl mb-2 tracking-wide">DYNAMIC_FORM_BUILDER</h3>
+                                    <div class="flex justify-between font-mono text-sm mb-4 text-gray-400">
+                                        <span class="px-2 py-0.5 bg-green text-black font-bold rounded shadow-[0_0_10px_#00ff66]">ONLINE</span>
+                                        <span>v1.0</span>
+                                    </div>
+                                    <p class="text-gray-300 font-mono text-sm leading-relaxed mb-6">Flexible form builder with drag-and-drop interface, real-time preview, and custom validation rules.</p>
+                                    <div class="flex flex-wrap gap-2 mt-auto">
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">REACT</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">TS</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">DND</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">HOOKS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="swiper-slide h-auto">
+                            <div class="cyber-card group h-full bg-white/5 border border-white/10 hover:border-cyan hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden clip-path-polygon">
+                                <div class="card-img h-48 bg-black/30 flex justify-center items-center relative group-hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="message-square-code" class="w-16 h-16 text-white/20 group-hover:text-cyan group-hover:drop-shadow-neon-cyan transition-all duration-300"></i>
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-head text-white text-xl mb-2 tracking-wide">REAL_TIME_CHAT</h3>
+                                    <div class="flex justify-between font-mono text-sm mb-4 text-gray-400">
+                                        <span class="px-2 py-0.5 bg-green text-black font-bold rounded shadow-[0_0_10px_#00ff66]">ONLINE</span>
+                                        <span>v1.0</span>
+                                    </div>
+                                    <p class="text-gray-300 font-mono text-sm leading-relaxed mb-6">Full-stack messaging app with WebSocket integration for instant bidirectional communication.</p>
+                                    <div class="flex flex-wrap gap-2 mt-auto">
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">NODE</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">SOCKET.IO</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">REACT</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">TS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="swiper-slide h-auto">
+                            <div class="cyber-card group h-full bg-white/5 border border-white/10 hover:border-cyan hover:bg-cyan/5 transition-all duration-300 relative overflow-hidden clip-path-polygon">
+                                <div class="card-img h-48 bg-black/30 flex justify-center items-center relative group-hover:scale-105 transition-transform duration-500">
+                                    <i data-lucide="database" class="w-16 h-16 text-white/20 group-hover:text-cyan group-hover:drop-shadow-neon-cyan transition-all duration-300"></i>
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-head text-white text-xl mb-2 tracking-wide">NEURAL_NOTES_SYNC</h3>
+                                    <div class="flex justify-between font-mono text-sm mb-4 text-gray-400">
+                                        <span class="px-2 py-0.5 bg-yellow-500 text-black font-bold rounded shadow-[0_0_10px_#eab308]">BETA</span>
+                                        <span>v0.5.0</span>
+                                    </div>
+                                    <p class="text-gray-300 font-mono text-sm leading-relaxed mb-6">Local-first knowledge base using SQLite Wasm & OPFS for high-performance persistent storage.</p>
+                                    <div class="flex flex-wrap gap-2 mt-auto">
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">REACT</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">PWA</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">SQL_WASM</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">OPFS</span>
+                                        <span class="font-mono text-xs text-cyan border border-cyan px-2 py-1">CRDTs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation & Pagination -->
+                    <div class="swiper-pagination !bottom-0"></div>
+                    <div class="swiper-button-prev !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff]"></div>
+                    <div class="swiper-button-next !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff]"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats (Skills) -->
+        <section id="skills" class="min-h-screen py-24 flex flex-col justify-center">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-12 bg-pink shadow-neon-pink"></span> SYSTEM_STATS <span class="h-0.5 w-12 bg-pink shadow-neon-pink"></span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
+                        <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">REACT_STACK</div>
+                        <div class="h-1 bg-white/10 w-full relative overflow-hidden">
+                            <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="90">0%</div>
+                        <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">TYPESCRIPT</div>
+                        <div class="h-1 bg-white/10 w-full relative overflow-hidden">
+                            <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
+                        <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">TAILWIND_UI</div>
+                        <div class="h-1 bg-white/10 w-full relative overflow-hidden">
+                            <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="85">0%</div>
+                        <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">BACKEND_OPS</div>
+                        <div class="h-1 bg-white/10 w-full relative overflow-hidden">
+                            <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt (Contact) -->
+        <section id="contact" class="min-h-screen py-24 flex flex-col justify-center">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-12 bg-green shadow-[0_0_10px_#00ff66]"></span> ESTABLISH_UPLINK <span class="h-0.5 w-12 bg-green shadow-[0_0_10px_#00ff66]"></span>
+                </h2>
+                
+                <div class="flex flex-col lg:flex-row gap-12 bg-black/40 border border-glass p-8 md:p-12 relative overflow-hidden max-w-5xl mx-auto shadow-2xl backdrop-blur-md">
+                    <!-- Left: Form -->
+                    <div class="flex-1 w-full">
+                        <form id="contactForm" class="flex flex-col gap-8">
+                            <div class="relative group">
+                                <label class="font-mono text-xs text-cyan opacity-80 mb-1 block tracking-wider">IDENTIFIER [NAME]</label>
+                                <input type="text" name="name" required class="w-full bg-transparent border-b-2 border-white/20 py-3 text-white font-body text-xl focus:outline-none focus:border-pink transition-colors placeholder-white/10">
+                            </div>
+                            <div class="relative group">
+                                <label class="font-mono text-xs text-cyan opacity-80 mb-1 block tracking-wider">FREQUENCY [EMAIL]</label>
+                                <input type="email" name="email" required class="w-full bg-transparent border-b-2 border-white/20 py-3 text-white font-body text-xl focus:outline-none focus:border-pink transition-colors placeholder-white/10">
+                            </div>
+                            <div class="relative group">
+                                <label class="font-mono text-xs text-cyan opacity-80 mb-1 block tracking-wider">TRANSMISSION [MESSAGE]</label>
+                                <textarea name="message" rows="4" required class="w-full bg-transparent border-b-2 border-white/20 py-3 text-white font-body text-xl focus:outline-none focus:border-pink transition-colors placeholder-white/10"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-cyan text-black font-head font-bold text-lg py-4 hover:bg-white hover:shadow-neon-cyan transition-all clip-path-polygon cursor-pointer mt-4">
+                                INITIATE_TRANSMISSION
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Radar/Social -->
+                    <div class="w-full lg:w-80 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-10">
+                        <div class="radar w-48 h-48 border-2 border-green rounded-full relative overflow-hidden mb-8 bg-green/5 shadow-[0_0_10px_rgba(0,255,102,0.1)]">
+                            <div class="absolute inset-0 border border-green/30 rounded-full scale-75"></div>
+                            <div class="absolute inset-0 border border-green/20 rounded-full scale-50"></div>
+                            <div class="sweep w-1/2 h-1/2 bg-gradient-to-r from-transparent to-green/50 absolute top-0 left-1/2 origin-bottom-left animate-[spin_2s_linear_infinite]"></div>
+                        </div>
+                        <div class="font-mono text-green animate-pulse mb-8 tracking-widest text-sm">SCANNING FOR SIGNALS...</div>
+                        
+                        <div class="flex flex-col gap-4 w-full">
+                            <a href="https://github.com/RamNikhil4" target="_blank" class="font-mono text-gray-400 border border-white/10 p-3 text-center hover:border-cyan hover:text-cyan hover:bg-cyan/5 transition flex items-center justify-center gap-2 group">
+                                <i data-lucide="github" class="group-hover:scale-110 transition-transform"></i> GITHUB_REPO
+                            </a>
+                            <a href="https://linkedin.com/in/ramnikhilteja" target="_blank" class="font-mono text-gray-400 border border-white/10 p-3 text-center hover:border-cyan hover:text-cyan hover:bg-cyan/5 transition flex items-center justify-center gap-2 group">
+                                <i data-lucide="linkedin" class="group-hover:scale-110 transition-transform"></i> LINKEDIN_NODE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Success Overlay -->
+                 <div id="transmissionOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300">
+                    <div class="bg-black border border-cyan p-8 text-center shadow-neon-cyan transform scale-95 transition-transform duration-300">
+                        <i data-lucide="check-circle" class="w-16 h-16 text-green mx-auto mb-4"></i>
+                        <h3 class="font-head text-2xl text-white mb-2">TRANSMISSION COMPLETE</h3>
+                        <p class="font-mono text-cyan">DATA PACKET RECEIVED. TERMINATING CONNECTION.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div> <!-- End Main Interface -->
+    
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

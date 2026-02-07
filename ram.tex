@@ -1,0 +1,192 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Ram Nikhil Teja Budide} \\ \vspace{1pt}
+    Macherla, Guntur, Andhra Pradesh \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ 7095657446 ~ \href{mailto:ramnikhil312@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{ramnikhil312@gmail.com}} ~ 
+    \href{https://www.linkedin.com/in/ram-nikhil-teja-budide-1759761a3/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/ramnikhilteja}}  ~
+    \href{https://github.com/RamNikhil4}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/RamNikhil4}}
+    \vspace{-8pt}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Rajiv Gandhi University of Knowledge Technologies}{2020 -- 2024}
+      {Bachelor of Technology in Computer Science and Engineering -- CGPA: 7.9/10}{Basar, Telangana}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Actanós}{November 2024 -- Present}
+      {Frontend Developer}{Singamaneni Palli, Andhra Pradesh}
+      \resumeItemListStart
+        \resumeItem{Developed three production applications using React, TypeScript, and TanStack ecosystem for legal tech, document management, and CRM domains.}
+        \resumeItem{Built dynamic form builder and email template builder with drag-and-drop functionality, enabling non-technical users to create custom forms and templates efficiently.}
+        \resumeItem{Implemented CSV bulk import with PapaParse for importing thousands of contacts and document editor with undo/redo, zoom, and resizable blocks.}
+        \resumeItem{Engineered automatic workflow progression in case filing application and developed responsive Actanós company website using Tailwind CSS.}
+        \resumeItem{Utilized TanStack Query, Router, and Table for efficient state management, routing, and data visualization while collaborating with cross-functional teams.}
+      \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+    
+      \resumeProjectHeading
+          {\textbf{Dynamic Form Builder} $|$ \emph{React, TypeScript, Drag-and-Drop, Custom Hooks}}{Personal Project}
+          \resumeItemListStart
+            \resumeItem{Built a flexible form builder application allowing users to create custom forms through intuitive drag-and-drop interface with real-time preview functionality.}
+            \resumeItem{Implemented multiple field types including text inputs, dropdowns, checkboxes, radio buttons, and file uploads with customizable validation rules and styling options.}
+            \resumeItem{Designed reusable component architecture with custom React hooks for form state management, field registration, and validation logic.}
+            \resumeItem{Added features for form export/import as JSON, conditional field rendering, and responsive design for seamless mobile experience.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+          
+      \resumeProjectHeading
+          {\textbf{Real-Time Chat Application} $|$ \emph{React, TypeScript, WebSockets, Node.js}}{Personal Project}
+          \resumeItemListStart
+            \resumeItem{Developed full-stack real-time messaging application with WebSocket integration for instant bidirectional communication between multiple users.}
+            \resumeItem{Implemented user authentication, chat rooms, private messaging, typing indicators, and online/offline status tracking with persistent message history.}
+            \resumeItem{Built responsive chat UI with message threading, emoji support, and file sharing capabilities using modern React patterns and TypeScript for type safety.}
+            \resumeItem{Optimized WebSocket connection handling for reconnection logic, message queuing, and efficient data synchronization across clients.}
+          \resumeItemListEnd 
+          \vspace{-13pt}
+          
+      \resumeProjectHeading
+          {\textbf{Neural Notes Sync} $|$ \emph{React, PWA, SQL Wasm, OPFS, CRDTs}}{Personal Project}
+          \resumeItemListStart
+            \resumeItem{Architected a local-first knowledge base using SQLite Wasm and Origin Private File System (OPFS) for high-performance persistent storage.}
+            \resumeItem{Implemented conflict-free replicated data types (CRDTs) to handle multi-device synchronization and eventual consistency.}
+            \resumeItem{Developed a Progressive Web App (PWA) ensuring complete offline functionality with instant sub-100ms load times.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+          
+    \resumeSubHeadingListEnd
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: JavaScript (ES6+), TypeScript, HTML5, CSS3, SQL} \\
+     \textbf{Frontend Technologies}{: React.js (Hooks, Context API, Custom Hooks), TanStack Query, TanStack Table, TanStack Router} \\
+     \textbf{Styling \& UI}{: Tailwind CSS, CSS Modules, Responsive Design, Mobile-First Design} \\
+     \textbf{Backend (Familiar)}{: Node.js, Express.js, Hono, REST APIs, WebSockets} \\
+     \textbf{Databases (Familiar)}{: MongoDB, PostgreSQL} \\
+     \textbf{Tools \& Libraries}{: Git, GitHub, VS Code, PapaParse, Postman, npm/yarn, Webpack} \\
+     \textbf{Core Competencies}{: Component Architecture, State Management, API Integration, Performance Optimization, Code Reviews} \\
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
+\end{document}
