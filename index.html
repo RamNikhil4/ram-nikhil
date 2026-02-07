@@ -119,8 +119,8 @@
     <div class="scanlines"></div>
     
     <!-- Header -->
-    <header class="fixed top-0 left-0 w-full h-20 bg-[rgba(2,4,16,0.9)] backdrop-blur-md border-b border-cyan/30 z-50 shadow-neon-cyan">
-        <div class="container mx-auto h-full flex justify-between items-center px-6">
+    <header class="fixed top-0 left-0 w-full h-16 md:h-20 bg-[rgba(2,4,16,0.9)] backdrop-blur-md border-b border-cyan/30 z-50 shadow-neon-cyan">
+        <div class="container mx-auto h-full flex justify-between items-center px-4 md:px-6">
             <!-- Logo -->
             <a href="#" class="font-head text-2xl tracking-widest text-white group flex items-center gap-2">
                 <i data-lucide="cpu" class="text-cyan group-hover:rotate-180 transition-transform duration-700"></i>
@@ -179,37 +179,37 @@
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan/10 rounded-full blur-[100px] animate-pulse"></div>
             </div>
 
-            <div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="container mx-auto px-4 md:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
                 <!-- Text Content -->
-                <div class="order-2 lg:order-1 flex flex-col gap-6">
+                <div class="order-2 lg:order-1 flex flex-col gap-6 items-center lg:items-start text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 font-mono text-cyan text-sm tracking-[0.2em] border border-cyan/30 px-3 py-1 w-fit bg-cyan/5">
                         <span class="w-2 h-2 bg-green rounded-full animate-pulse shadow-[0_0_5px_#00ff66]"></span>
                         SYSTEM_ONLINE
                     </div>
                     
-                    <h1 class="font-head text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight drop-shadow-neon-cyan relative z-20">
+                    <h1 class="font-head text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none drop-shadow-neon-cyan relative z-20">
                         <span class="glitch-text block" data-text="RAM">RAM</span>
                         <span class="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan to-blue-600 block" data-text="NIKHIL">NIKHIL</span>
                     </h1>
                     
-                    <div class="h-16 flex items-center">
-                        <span id="typed-output" class="font-mono text-xl md:text-2xl text-pink drop-shadow-neon-pink"></span>
+                    <div class="h-10 md:h-16 flex items-center">
+                        <span id="typed-output" class="font-mono text-base md:text-2xl text-pink drop-shadow-neon-pink"></span>
                     </div>
 
-                    <p class="font-body text-gray-400 text-lg max-w-lg leading-relaxed border-l-2 border-white/20 pl-4">
+                    <p class="font-body text-gray-400 text-base md:text-lg max-w-lg leading-relaxed border-l-2 border-white/20 pl-4">
                         Executing high-performance frontend architecture. 
                         Specializing in <span class="text-cyan">React</span> ecosystems and immersive UI paradigms.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="#projects" class="px-8 py-3 bg-cyan text-black font-head font-bold hover:bg-white hover:shadow-neon-cyan transition-all clip-path-polygon">
+                    <div class="flex flex-wrap gap-3 md:gap-4 pt-4 justify-center lg:justify-start">
+                        <a href="#projects" class="px-6 md:px-8 py-2.5 md:py-3 bg-cyan text-black font-head font-bold text-sm md:text-base hover:bg-white hover:shadow-neon-cyan transition-all clip-path-polygon">
                             VIEW_MODULES
                         </a>
-                        <a href="#contact" class="px-8 py-3 bg-transparent border border-cyan text-cyan font-head font-bold hover:bg-cyan/10 hover:shadow-neon-cyan transition-all clip-path-polygon">
+                        <a href="#contact" class="px-6 md:px-8 py-2.5 md:py-3 bg-transparent border border-cyan text-cyan font-head font-bold text-sm md:text-base hover:bg-cyan/10 hover:shadow-neon-cyan transition-all clip-path-polygon">
                             CONTACT_
                         </a>
-                        <a href="Ram_Nikhil_Resume.pdf" target="_blank" class="px-8 py-3 bg-pink/10 border border-pink text-pink font-head font-bold hover:bg-pink/20 hover:shadow-neon-pink transition-all clip-path-polygon flex items-center gap-2">
-                            <i data-lucide="file-text" class="w-4 h-4"></i> RESUME_FILE
+                        <a href="Ram_Nikhil_Resume.pdf" target="_blank" class="px-6 md:px-8 py-2.5 md:py-3 bg-pink/10 border border-pink text-pink font-head font-bold text-sm md:text-base hover:bg-pink/20 hover:shadow-neon-pink transition-all clip-path-polygon flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> RESUME
                         </a>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                 <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
                     <!-- Circle Graphic -->
                     <!-- Circle Graphic -->
-                     <div class="w-64 h-64 md:w-80 md:h-80 flex justify-center items-center relative">
+                     <div class="w-48 h-48 md:w-80 md:h-80 flex justify-center items-center relative">
                         <!-- Spinning Rings -->
                         <div class="absolute inset-0 border-2 border-white/10 rounded-full animate-[spin_10s_linear_infinite]">
                             <div class="absolute inset-0 border-t-2 border-cyan rounded-full"></div>
@@ -226,7 +226,7 @@
                         </div>
                         
                         <!-- Profile/Avatar Placeholder -->
-                        <div class="w-48 h-48 md:w-60 md:h-60 rounded-full bg-black/50 border border-white/20 backdrop-blur-sm overflow-hidden flex items-center justify-center relative z-20 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
+                        <div class="w-36 h-36 md:w-60 md:h-60 rounded-full bg-black/50 border border-white/20 backdrop-blur-sm overflow-hidden flex items-center justify-center relative z-20 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
                              <img src="avatar_cyberpunk.png" alt="Avatar" class="w-full h-full object-cover">
                         </div>
                      </div>
@@ -234,26 +234,26 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cyan opacity-60 hover:opacity-100 transition-opacity animate-bounce cursor-pointer">
+            <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-cyan opacity-60 hover:opacity-100 transition-opacity animate-bounce cursor-pointer hidden md:flex">
                 <span class="font-mono text-xs tracking-widest">SCROLL_DOWN</span>
                 <i data-lucide="chevrons-down"></i>
             </a>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="min-h-screen py-24 flex items-center bg-black/20">
-            <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <section id="about" class="min-h-screen py-12 md:py-24 flex items-center bg-black/20">
+            <div class="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <!-- Info Panel -->
-                <div class="relative p-8 border border-white/10 bg-white/5 backdrop-blur-sm group hover:border-cyan/50 transition-colors duration-500">
+                <div class="relative p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-sm group hover:border-cyan/50 transition-colors duration-500">
                     <!-- Decor Corners -->
-                    <div class="absolute top-0 left-0 w-2 h-2 bg-cyan shadow-neon-cyan"></div>
-                    <div class="absolute top-0 right-0 w-2 h-2 bg-cyan shadow-neon-cyan"></div>
-                    <div class="absolute bottom-0 left-0 w-2 h-2 bg-pink shadow-neon-pink"></div>
-                    <div class="absolute bottom-0 right-0 w-2 h-2 bg-pink shadow-neon-pink"></div>
+                    <div class="absolute top-0 left-0 w-2 h-2 bg-cyan shadow-neon-cyan opacity-50 md:opacity-100"></div>
+                    <div class="absolute top-0 right-0 w-2 h-2 bg-cyan shadow-neon-cyan opacity-50 md:opacity-100"></div>
+                    <div class="absolute bottom-0 left-0 w-2 h-2 bg-pink shadow-neon-pink opacity-50 md:opacity-100"></div>
+                    <div class="absolute bottom-0 right-0 w-2 h-2 bg-pink shadow-neon-pink opacity-50 md:opacity-100"></div>
 
-                    <h2 class="font-head text-3xl text-white mb-6 flex items-center gap-2">
-                        <i data-lucide="terminal" class="text-pink"></i> 
-                        SYSTEM_ID: <span class="text-gray-400">RAM_NIKHIL</span>
+                    <h2 class="font-head text-xl md:text-3xl text-white mb-6 flex flex-col md:flex-row items-center gap-2 text-center md:text-left">
+                        <i data-lucide="terminal" class="text-pink mb-2 md:mb-0"></i> 
+                        <span>SYSTEM_ID: <span class="text-gray-400 break-all">RAM_NIKHIL</span></span>
                     </h2>
                     
                     <div class="space-y-4 font-mono text-gray-300 leading-relaxed text-sm md:text-base">
@@ -286,7 +286,7 @@
                 </div>
 
                 <!-- Skills Cloud (Visual) -->
-                <div class="hidden md:flex flex-wrap gap-4 justify-center content-center opacity-80">
+                <div class="flex flex-wrap gap-2 md:gap-4 justify-center content-center opacity-80 mt-8 md:mt-0">
                     <span class="font-mono text-cyan border border-cyan px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0s]">React.js</span>
                     <span class="font-mono text-blue-400 border border-blue-400 px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.2s]">TypeScript</span>
                     <span class="font-mono text-pink border border-pink px-4 py-2 rounded-full text-sm animate-bounce [animation-delay:0.4s]">Tailwind_CSS</span>
@@ -298,22 +298,22 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="min-h-screen py-24 flex flex-col justify-center relative">
-            <div class="container mx-auto px-6 max-w-4xl">
-                 <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-20 flex items-center justify-center gap-4 drop-shadow-neon-pink">
-                    <span class="h-0.5 w-12 bg-pink shadow-neon-pink hidden md:block"></span> PAST_MISSIONS <span class="h-0.5 w-12 bg-pink shadow-neon-pink hidden md:block"></span>
+        <section id="experience" class="min-h-screen py-12 md:py-24 flex flex-col justify-center relative">
+            <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+                 <h2 class="section-title text-2xl md:text-5xl font-head text-white text-center mb-8 md:mb-20 flex items-center justify-center gap-4 drop-shadow-neon-pink">
+                    <span class="h-0.5 w-8 md:w-12 bg-pink shadow-neon-pink block"></span> PAST_MISSIONS <span class="h-0.5 w-8 md:w-12 bg-pink shadow-neon-pink block"></span>
                 </h2>
 
-                <div class="border-l-2 border-white/10 ml-0 md:ml-10 pl-8 md:pl-12 space-y-16 relative">
+                <div class="border-l-2 border-white/10 ml-2 md:ml-10 pl-6 md:pl-12 space-y-8 md:space-y-16 relative">
                     <!-- Job 1 -->
                     <div class="relative group">
                         <!-- Marker -->
-                        <div class="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 bg-void border-2 border-cyan rotate-45 group-hover:bg-cyan group-hover:scale-125 transition-all duration-300 shadow-neon-cyan z-10"></div>
+                        <div class="absolute -left-[31px] md:-left-[57px] top-1 w-3 h-3 md:w-4 md:h-4 bg-void border-2 border-cyan rotate-45 group-hover:bg-cyan group-hover:scale-125 transition-all duration-300 shadow-neon-cyan z-10"></div>
                         
-                        <span class="font-mono text-pink text-sm absolute -top-8 left-0 md:static md:float-right md:text-right mb-2 block">NOV 2024 - PRESENT</span>
+                        <span class="font-mono text-pink text-sm block mb-2 md:static md:float-right md:text-right">NOV 2024 - PRESENT</span>
                         
-                        <div class="bg-white/5 border border-white/5 p-6 md:p-8 rounded-sm hover:border-cyan/30 transition-colors">
-                            <h3 class="font-head text-2xl text-white mb-2 group-hover:text-cyan transition-colors">FRONTEND_DEVELOPER</h3>
+                        <div class="bg-white/5 border border-white/5 p-5 md:p-8 rounded-sm hover:border-cyan/30 transition-colors">
+                            <h3 class="font-head text-lg md:text-2xl text-white mb-2 group-hover:text-cyan transition-colors break-words leading-tight">FRONTEND_DEVELOPER</h3>
                             <div class="text-green font-mono text-sm mb-4 tracking-wider">AT: ACTANÓS</div>
                             <p class="font-mono text-gray-400 mb-6 leading-relaxed">
                                 Developed production applications using React, TypeScript, and TanStack ecosystem for legal tech and CRM domains.
@@ -331,14 +331,14 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="min-h-screen py-24 flex flex-col justify-center relative">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-                    <span class="h-0.5 w-12 bg-cyan shadow-neon-cyan"></span> ACTIVE_MODULES <span class="h-0.5 w-12 bg-cyan shadow-neon-cyan"></span>
+        <section id="projects" class="min-h-screen py-12 md:py-24 flex flex-col justify-center relative">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="section-title text-2xl md:text-5xl font-head text-white text-center mb-8 md:mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-8 md:w-12 bg-cyan shadow-neon-cyan block"></span> ACTIVE_MODULES <span class="h-0.5 w-8 md:w-12 bg-cyan shadow-neon-cyan block"></span>
                 </h2>
 
                 <!-- Swiper Carousel Wrapper -->
-                <div class="swiper mySwiper w-full pb-12 pt-5">
+                <div class="swiper mySwiper w-full pb-12 pt-5 px-0 md:px-12 relative">
                     <div class="swiper-wrapper">
                         <!-- Project 1 -->
                         <div class="swiper-slide h-auto">
@@ -416,43 +416,43 @@
 
                     <!-- Navigation & Pagination -->
                     <div class="swiper-pagination !bottom-0"></div>
-                    <div class="swiper-button-prev !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff]"></div>
-                    <div class="swiper-button-next !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff]"></div>
+                    <div class="swiper-button-prev !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff] hidden md:flex !-left-2"></div>
+                    <div class="swiper-button-next !text-cyan after:!text-2xl hover:drop-shadow-[0_0_5px_#00f3ff] hidden md:flex !-right-2"></div>
                 </div>
             </div>
         </section>
 
         <!-- Stats (Skills) -->
-        <section id="skills" class="min-h-screen py-24 flex flex-col justify-center">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-                    <span class="h-0.5 w-12 bg-pink shadow-neon-pink"></span> SYSTEM_STATS <span class="h-0.5 w-12 bg-pink shadow-neon-pink"></span>
+        <section id="skills" class="min-h-screen py-12 md:py-24 flex flex-col justify-center">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="section-title text-2xl md:text-5xl font-head text-white text-center mb-8 md:mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-8 md:w-12 bg-pink shadow-neon-pink block"></span> SYSTEM_STATS <span class="h-0.5 w-8 md:w-12 bg-pink shadow-neon-pink block"></span>
                 </h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
-                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                    <div class="stat-box text-center group bg-white/5 p-4 md:p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-2xl md:text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
                         <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">REACT_STACK</div>
                         <div class="h-1 bg-white/10 w-full relative overflow-hidden">
                             <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
                         </div>
                     </div>
-                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
-                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="90">0%</div>
+                    <div class="stat-box text-center group bg-white/5 p-4 md:p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-2xl md:text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="90">0%</div>
                         <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">TYPESCRIPT</div>
                         <div class="h-1 bg-white/10 w-full relative overflow-hidden">
                             <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
                         </div>
                     </div>
-                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
-                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
+                    <div class="stat-box text-center group bg-white/5 p-4 md:p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-2xl md:text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="95">0%</div>
                         <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">TAILWIND_UI</div>
                         <div class="h-1 bg-white/10 w-full relative overflow-hidden">
                             <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
                         </div>
                     </div>
-                    <div class="stat-box text-center group bg-white/5 p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
-                        <div class="stat-value font-head text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="85">0%</div>
+                    <div class="stat-box text-center group bg-white/5 p-4 md:p-8 border border-white/5 hover:border-pink/50 transition-all duration-300 rounded-sm">
+                        <div class="stat-value font-head text-2xl md:text-5xl text-pink font-bold drop-shadow-neon-pink mb-2" data-target="85">0%</div>
                         <div class="stat-label font-mono text-gray-400 tracking-widest mb-4">BACKEND_OPS</div>
                         <div class="h-1 bg-white/10 w-full relative overflow-hidden">
                             <div class="stat-fill h-full bg-cyan shadow-neon-cyan w-0 transition-all duration-1000 group-hover:bg-pink"></div>
@@ -463,13 +463,13 @@
         </section>
 
         <!-- Kontakt (Contact) -->
-        <section id="contact" class="min-h-screen py-24 flex flex-col justify-center">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title text-4xl md:text-5xl font-head text-white text-center mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-                    <span class="h-0.5 w-12 bg-green shadow-[0_0_10px_#00ff66]"></span> ESTABLISH_UPLINK <span class="h-0.5 w-12 bg-green shadow-[0_0_10px_#00ff66]"></span>
+        <section id="contact" class="min-h-screen py-12 md:py-24 flex flex-col justify-center">
+            <div class="container mx-auto px-4 md:px-6">
+                <h2 class="section-title text-2xl md:text-5xl font-head text-white text-center mb-8 md:mb-16 flex items-center justify-center gap-4 drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                    <span class="h-0.5 w-8 md:w-12 bg-green shadow-[0_0_10px_#00ff66] block"></span> ESTABLISH_UPLINK <span class="h-0.5 w-8 md:w-12 bg-green shadow-[0_0_10px_#00ff66] block"></span>
                 </h2>
                 
-                <div class="flex flex-col lg:flex-row gap-12 bg-black/40 border border-glass p-8 md:p-12 relative overflow-hidden max-w-5xl mx-auto shadow-2xl backdrop-blur-md">
+                <div class="flex flex-col lg:flex-row gap-12 bg-black/40 border border-glass p-6 md:p-12 relative overflow-hidden max-w-5xl mx-auto shadow-2xl backdrop-blur-md">
                     <!-- Left: Form -->
                     <div class="flex-1 w-full">
                         <form id="contactForm" class="flex flex-col gap-8">
