@@ -51,7 +51,7 @@ export default function About() {
           <ScrollReveal
             variant="fadeLeft"
             delay={0.1}
-            className="lg:col-span-3 glass rounded-2xl p-8 md:p-10 relative group hover:border-accent/30 transition-colors duration-500"
+            className="lg:col-span-3 glass rounded-2xl p-5 sm:p-8 md:p-10 relative group hover:border-accent/30 transition-colors duration-500"
           >
             {/* Subtle corner accent */}
             <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-accent/20 rounded-tl-2xl" />
@@ -83,9 +83,9 @@ export default function About() {
             </div>
 
             {/* Info chips */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-border">
-                <GraduationCap size={16} className="text-accent-light" />
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 border border-border w-full sm:w-auto">
+                <GraduationCap size={16} className="text-accent-light shrink-0" />
                 <div>
                   <div className="text-xs text-text-muted">Education</div>
                   <div className="text-sm text-text-primary font-medium">
@@ -93,8 +93,8 @@ export default function About() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-border">
-                <MapPin size={16} className="text-teal" />
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 border border-border w-full sm:w-auto">
+                <MapPin size={16} className="text-teal shrink-0" />
                 <div>
                   <div className="text-xs text-text-muted">Location</div>
                   <div className="text-sm text-text-primary font-medium">
@@ -102,8 +102,8 @@ export default function About() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-border">
-                <Zap size={16} className="text-amber" />
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 border border-border w-full sm:w-auto">
+                <Zap size={16} className="text-amber shrink-0" />
                 <div>
                   <div className="text-xs text-text-muted">Status</div>
                   <div className="text-sm text-teal font-medium flex items-center gap-1.5">
@@ -133,7 +133,7 @@ export default function About() {
               {skills.map((skill) => (
                 <StaggerItem key={skill.name} variant="scaleUp">
                   <span
-                    className={`inline-block px-4 py-2 rounded-lg border font-medium text-sm transition-all duration-200 hover:scale-105 cursor-default ${skill.color}`}
+                    className={`inline-block px-3 py-1.5 rounded-lg border font-medium text-xs sm:text-sm transition-all duration-200 hover:scale-105 cursor-default ${skill.color}`}
                   >
                     {skill.name}
                   </span>
@@ -153,11 +153,11 @@ export default function About() {
                 { label: "CGPA", value: "7.9" },
               ].map((stat) => (
                 <StaggerItem key={stat.label} variant="fadeUp">
-                  <div className="glass rounded-xl p-4 text-center hover:border-accent/30 transition-colors group">
-                    <div className="font-heading text-2xl font-bold text-accent-light group-hover:text-accent transition-colors">
+                  <div className="glass rounded-xl p-3 sm:p-4 text-center hover:border-accent/30 transition-colors group">
+                    <div className="font-heading text-xl sm:text-2xl font-bold text-accent-light group-hover:text-accent transition-colors">
                       {stat.value}
                     </div>
-                    <div className="text-xs text-text-muted mt-1 font-mono tracking-wider uppercase">
+                    <div className="text-[10px] sm:text-xs text-text-muted mt-1 font-mono tracking-wider uppercase">
                       {stat.label}
                     </div>
                   </div>

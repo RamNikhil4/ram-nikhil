@@ -122,7 +122,7 @@ export default function Projects() {
                   </div>
 
                   {/* Card body */}
-                  <div className="p-6 flex flex-col flex-1">
+                  <div className="p-4 sm:p-6 flex flex-col flex-1">
                     <div className="mb-3">
                       <h3 className="font-heading text-xl font-bold text-text-primary group-hover:text-accent-light transition-colors">
                         {project.title}

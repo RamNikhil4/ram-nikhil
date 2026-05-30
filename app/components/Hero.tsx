@@ -59,7 +59,7 @@ export default function Hero() {
 
           {/* Heading */}
           <ScrollReveal variant="blur" delay={0.2}>
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight">
+            <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight">
               Hi, I&apos;m{" "}
               <span className="gradient-text">Ram Nikhil</span>
             </h1>
@@ -75,17 +75,17 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <ScrollReveal variant="fadeUp" delay={0.5}>
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 flex items-center gap-2 hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 flex items-center justify-center gap-2 hover:-translate-y-0.5"
               >
                 <Sparkles size={16} />
                 View Projects
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 bg-white/5 hover:bg-white/10 text-text-primary font-semibold rounded-xl border border-border hover:border-accent/40 transition-all duration-200 hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 text-text-primary font-semibold rounded-xl border border-border hover:border-accent/40 transition-all duration-200 flex items-center justify-center hover:-translate-y-0.5"
               >
                 Get in Touch
               </a>
@@ -100,15 +100,15 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/30 via-teal/15 to-rose/10 blur-2xl scale-110 animate-pulse-glow" />
 
             {/* Spinning orbit */}
-            <div className="absolute inset-[-16px] border border-accent/10 rounded-full animate-spin-slow" />
-            <div className="absolute inset-[-32px] border border-teal/5 rounded-full animate-spin-slow [animation-direction:reverse] [animation-duration:30s]" />
+            <div className="absolute inset-[-8px] sm:inset-[-16px] border border-accent/10 rounded-full animate-spin-slow" />
+            <div className="absolute inset-[-16px] sm:inset-[-32px] border border-teal/5 rounded-full animate-spin-slow [animation-direction:reverse] [animation-duration:30s]" />
 
             {/* Orbit dots */}
-            <div className="absolute inset-[-16px] animate-spin-slow">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-accent rounded-full shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
+            <div className="absolute inset-[-8px] sm:inset-[-16px] animate-spin-slow">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-accent rounded-full shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
             </div>
-            <div className="absolute inset-[-32px] animate-spin-slow [animation-direction:reverse] [animation-duration:30s]">
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-teal rounded-full shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+            <div className="absolute inset-[-16px] sm:inset-[-32px] animate-spin-slow [animation-direction:reverse] [animation-duration:30s]">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 sm:w-1.5 h-1 sm:h-1.5 bg-teal rounded-full shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
             </div>
 
             {/* Avatar */}

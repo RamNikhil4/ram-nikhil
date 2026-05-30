@@ -52,7 +52,7 @@ export default function Contact() {
             <form
               id="contact-form"
               onSubmit={handleSubmit}
-              className="glass rounded-2xl p-8 space-y-6"
+              className="glass rounded-2xl p-5 sm:p-8 space-y-6"
             >
               <div>
                 <label
@@ -125,7 +125,7 @@ export default function Contact() {
           {/* Sidebar */}
           <ScrollReveal variant="fadeRight" delay={0.2} className="lg:col-span-2 flex flex-col gap-4">
             {/* Connect card */}
-            <div className="glass rounded-2xl p-6">
+            <div className="glass rounded-2xl p-4 sm:p-6">
               <h3 className="font-heading text-lg font-bold text-text-primary mb-4 flex items-center gap-2">
                 <span className="w-6 h-0.5 bg-accent rounded-full" />
                 Connect
@@ -187,7 +187,7 @@ export default function Contact() {
             </div>
 
             {/* Quick Info */}
-            <div className="glass rounded-2xl p-6 text-center">
+            <div className="glass rounded-2xl p-4 sm:p-6 text-center">
               <div className="text-4xl font-heading font-bold gradient-text mb-1">
                 1.3+
               </div>

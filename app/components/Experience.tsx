@@ -48,15 +48,14 @@ export default function Experience() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent" />
+          <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent" />
 
           <StaggerContainer className="space-y-12" staggerDelay={0.15}>
             {experiences.map((exp, i) => (
               <StaggerItem key={i} variant="fadeLeft">
-                <div className="relative pl-12 md:pl-20 group">
+                <div className="relative pl-8 sm:pl-12 md:pl-20 group">
                   {/* Timeline dot */}
-                  <div className="absolute left-2.5 md:left-6.5 top-2 z-10">
+                  <div className="absolute left-[10px] sm:left-[26px] top-3 z-10">
                     <div
                       className={`w-3 h-3 rounded-full border-2 transition-all duration-300 group-hover:scale-125 ${
                         exp.current
@@ -66,8 +65,7 @@ export default function Experience() {
                     />
                   </div>
 
-                  {/* Card */}
-                  <div className="glass rounded-2xl p-6 md:p-8 hover:border-accent/30 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-accent/5">
+                  <div className="glass rounded-2xl p-4 sm:p-6 md:p-8 hover:border-accent/30 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-accent/5">
                     {/* Header row */}
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
                       <div>

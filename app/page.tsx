@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <SmoothScroll />
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 overflow-x-hidden">
         <Hero />
         <About />
         <Experience />
