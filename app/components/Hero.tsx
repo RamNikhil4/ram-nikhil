@@ -5,6 +5,7 @@ import React from "react";
 import { ArrowDown, Sparkles } from "lucide-react";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import { GitHubIcon } from "./Icons";
 
 export default function Hero() {
   const mouseX = useMotionValue(0);
@@ -89,6 +90,15 @@ export default function Hero() {
               >
                 Get in Touch
               </a>
+              <a
+                href="https://github.com/RamNikhil4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 text-text-primary font-semibold rounded-xl border border-border hover:border-accent/40 transition-all duration-200 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+              >
+                <GitHubIcon size={16} />
+                GitHub
+              </a>
             </div>
           </ScrollReveal>
         </div>
@@ -131,7 +141,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted hover:text-accent-light transition-colors cursor-pointer group"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-text-muted hover:text-accent-light transition-colors cursor-pointer group"
       >
         <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
         <ArrowDown size={16} className="animate-bounce" />

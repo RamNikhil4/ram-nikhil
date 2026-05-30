@@ -114,19 +114,19 @@ export default function Contact() {
                   </>
                 ) : (
                   <>
-                    <Send size={16} />
                     Send Message
+                    <Send size={16} />
                   </>
                 )}
               </button>
             </form>
           </ScrollReveal>
-
+ 
           {/* Sidebar */}
           <ScrollReveal variant="fadeRight" delay={0.2} className="lg:col-span-2 flex flex-col gap-4">
             {/* Connect card */}
-            <div className="glass rounded-2xl p-4 sm:p-6">
-              <h3 className="font-heading text-lg font-bold text-text-primary mb-4 flex items-center gap-2">
+            <div className="glass rounded-2xl p-6 space-y-4">
+              <h3 className="font-heading text-lg font-bold text-text-primary flex items-center gap-2 mb-2">
                 <span className="w-6 h-0.5 bg-accent rounded-full" />
                 Connect
               </h3>
@@ -135,65 +135,67 @@ export default function Contact() {
                   href="https://github.com/RamNikhil4"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
+                  className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
                 >
-                  <GitHubIcon
-                    size={18}
-                    className="text-text-muted group-hover:text-accent-light transition-colors"
-                  />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors flex-1">
-                    GitHub
-                  </span>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-text-muted opacity-0 group-hover:opacity-100 transition-opacity"
-                  />
+                  <div className="w-10 h-10 rounded-lg bg-bg-primary/50 border border-border flex items-center justify-center text-text-muted group-hover:text-accent-light transition-colors">
+                    <GitHubIcon size={20} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[10px] font-mono tracking-widest text-text-muted uppercase">
+                      GITHUB
+                    </div>
+                    <div className="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors">
+                      @ramnikhil
+                    </div>
+                  </div>
                 </a>
+ 
                 <a
                   href="https://www.linkedin.com/in/ram-nikhil-teja-budide/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
+                  className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
                 >
-                  <LinkedInIcon
-                    size={18}
-                    className="text-text-muted group-hover:text-accent-light transition-colors"
-                  />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors flex-1">
-                    LinkedIn
-                  </span>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-text-muted opacity-0 group-hover:opacity-100 transition-opacity"
-                  />
+                  <div className="w-10 h-10 rounded-lg bg-bg-primary/50 border border-border flex items-center justify-center text-text-muted group-hover:text-accent-light transition-colors">
+                    <LinkedInIcon size={20} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[10px] font-mono tracking-widest text-text-muted uppercase">
+                      LINKEDIN
+                    </div>
+                    <div className="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors">
+                      ramnikhil-dev
+                    </div>
+                  </div>
                 </a>
+ 
                 <a
                   href="mailto:ramnikhil312@gmail.com"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
+                  className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-border hover:border-accent/30 hover:bg-accent/5 transition-all group hover:-translate-y-0.5"
                 >
-                  <Mail
-                    size={18}
-                    className="text-text-muted group-hover:text-accent-light transition-colors"
-                  />
-                  <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors flex-1">
-                    Email
-                  </span>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-text-muted opacity-0 group-hover:opacity-100 transition-opacity"
-                  />
+                  <div className="w-10 h-10 rounded-lg bg-bg-primary/50 border border-border flex items-center justify-center text-text-muted group-hover:text-accent-light transition-colors">
+                    <Mail size={20} />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[10px] font-mono tracking-widest text-text-muted uppercase">
+                      EMAIL
+                    </div>
+                    <div className="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors">
+                      hello@ramnikhil.com
+                    </div>
+                  </div>
                 </a>
               </div>
             </div>
-
-            {/* Quick Info */}
-            <div className="glass rounded-2xl p-4 sm:p-6 text-center">
-              <div className="text-4xl font-heading font-bold gradient-text mb-1">
-                1.3+
-              </div>
-              <div className="text-sm text-text-muted">
-                Years of Professional Experience
-              </div>
+ 
+            {/* Quote Card */}
+            <div className="glass rounded-2xl p-6 text-left border border-border">
+              <p className="text-accent italic font-medium mb-3 leading-relaxed text-sm">
+                &ldquo;Design is not just what it looks like and feels like. Design is how it works.&rdquo;
+              </p>
+              <p className="text-xs text-text-muted font-mono uppercase tracking-wider">
+                &mdash; Steve Jobs
+              </p>
             </div>
           </ScrollReveal>
         </div>
