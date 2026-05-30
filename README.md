@@ -1,72 +1,36 @@
-# Ram Nikhil Teja - Portfolio
-
-A futuristic, cyberpunk-themed portfolio website built with modern web technologies.
-
-![Cyberpunk Avatar](avatar_cyberpunk.png)
-
-## Tech Stack
-
-- **HTML5**: Semantic structure.
-- **Tailwind CSS v4**: Utility-first CSS framework (via CDN) for rapid styling.
-- **JavaScript (Vanilla)**: Interactive elements, typing animations, and scroll behaviors.
-- **Lucide Icons**: Beautiful open-source icons.
-- **Swiper.js**: Touch-enabled mobile-friendly slider for project showcase.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-### Prerequisites
+First, run the development server:
 
-You need a modern web browser to view the site. To run it locally, a simple HTTP server is recommended to avoid CORS issues with certain assets or functionalities (like local font loading or module scripts if used).
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### Local Development
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1.  **Clone the repository:**
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-    ```bash
-    git clone https://github.com/yourusername/portfolio.git
-    cd portfolio
-    ```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-2.  **Start a local server:**
-    You can use Python's built-in server or any other static file server.
+## Learn More
 
-    **Using Python 3:**
+To learn more about Next.js, take a look at the following resources:
 
-    ```bash
-    python3 -m http.server
-    ```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-    **Using Node.js (http-server):**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-    ```bash
-    npx http-server .
-    ```
+## Deploy on Vercel
 
-3.  **Open in Browser:**
-    Navigate to `http://localhost:8000` (or the port shown in your terminal).
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Customization
-
-- **Avatar**: The avatar image is located at `avatar_cyberpunk.png`. You can replace this file with your own image.
-- **Content**: Edit `index.html` to update your bio, projects, and contact information.
-- **Styles**: Custom styles and animations are in `style.css` and the `<style>` block in `index.html`.
-
-## Deployment
-
-This is a static website, so it can be deployed easily to any static hosting service.
-
-### Vercel (Recommended)
-
-1.  Install Vercel CLI: `npm i -g vercel`
-2.  Run `vercel` in the project directory.
-3.  Follow the prompts to deploy.
-
-### Netlify
-
-1.  Drag and drop the `portfolio` folder into the Netlify dashboard "Sites" area.
-
-### GitHub Pages
-
-1.  Go to your repository settings on GitHub.
-2.  Navigate to "Pages".
-3.  Select the `main` branch as the source and save.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
