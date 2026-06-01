@@ -23,10 +23,11 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
   const avatarScale = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
-  const avatarOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const avatarOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const avatarY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   function handleMouseMove({
     currentTarget,
@@ -46,7 +47,7 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-[140vh] overflow-hidden"
+      className="relative min-h-[100dvh] md:min-h-[115vh] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Background effects — subtle */}
@@ -58,7 +59,7 @@ export default function Hero() {
       <div className="bg-accent/3 absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]" />
 
       {/* Sticky content container */}
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center px-6">
+      <div className="sticky top-0 flex h-[100dvh] md:h-screen flex-col items-center justify-center px-6">
         {/* Avatar — cinematic, scroll-linked */}
         <motion.div
           style={{ scale: avatarScale, opacity: avatarOpacity, y: avatarY }}
@@ -159,9 +160,7 @@ export default function Hero() {
 
         {/* Scroll indicator — minimal */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
+          style={{ opacity: scrollIndicatorOpacity }}
           className="text-text-muted/50 absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
         >
           <ChevronDown

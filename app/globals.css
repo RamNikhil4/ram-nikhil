@@ -39,7 +39,7 @@
   --text-hero: clamp(3.5rem, 8vw, 7rem);
   --text-section: clamp(2.5rem, 5vw, 4.5rem);
   --text-large: clamp(1.25rem, 2vw, 1.5rem);
-  --section-padding: clamp(6rem, 12vh, 10rem);
+  --section-padding: clamp(4rem, 8vh, 10rem);
   --apple-ease: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   --apple-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --apple-duration: 1s;
