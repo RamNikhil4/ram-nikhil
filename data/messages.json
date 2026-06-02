@@ -1,0 +1,58 @@
+[
+  {
+    "id": "a32867f8-9f7f-4630-8e51-ce2928deda6f",
+    "name": "ram nikhil",
+    "email": "ramnikhil312@gmail.com",
+    "message": "he3llo\n",
+    "submittedAt": "2026-06-02T17:00:52.706Z"
+  },
+  {
+    "id": "cf3ddd68-0616-4fb8-aeae-d4204468dc1f",
+    "name": "EJS Tester",
+    "email": "ejs@example.com",
+    "message": "Hello! Testing the dynamic EJS template rendering for Brevo emails.",
+    "submittedAt": "2026-06-02T17:00:18.190Z"
+  },
+  {
+    "id": "69f6d3bc-592f-452c-80f9-d04ee24b081c",
+    "name": "ram nikhil",
+    "email": "ramnikhil312@gmail.com",
+    "message": "Hello",
+    "submittedAt": "2026-06-02T16:56:57.449Z"
+  },
+  {
+    "id": "d6cb0ea7-931d-4a48-bc54-3d6d1fbae0a9",
+    "name": "Annaiah",
+    "email": "annaiahbudide@gmail.com",
+    "message": "heello i want to do some project",
+    "submittedAt": "2026-06-02T16:52:50.457Z"
+  },
+  {
+    "id": "e4317ef2-c64e-4de0-817c-5649619b56c5",
+    "name": "Annaiah",
+    "email": "annaiahbudide@gmail.com",
+    "message": "hello",
+    "submittedAt": "2026-06-02T16:50:57.516Z"
+  },
+  {
+    "id": "90b72178-be46-41fe-92f3-9944b607a6df",
+    "name": "Annaiah",
+    "email": "annaiahbudide@gmail.com",
+    "message": "Hello",
+    "submittedAt": "2026-06-02T16:48:52.281Z"
+  },
+  {
+    "id": "594a0b85-e5a5-49dd-bba5-105d4bb63689",
+    "name": "Test User",
+    "email": "testuser@example.com",
+    "message": "Hello! This is an automated integration test for the contact form API route.",
+    "submittedAt": "2026-06-02T16:48:48.219Z"
+  },
+  {
+    "id": "2f0e1dd4-b70b-4d49-aa26-7b0a282354bf",
+    "name": "Annaiah",
+    "email": "annaiahbudide@gmail.com",
+    "message": "hello",
+    "submittedAt": "2026-06-02T16:47:26.969Z"
+  }
+]

@@ -9,17 +9,40 @@ import ScrollReveal from "./ScrollReveal";
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
-    setTimeout(() => {
-      setLoading(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+
       setSubmitted(true);
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setSubmitted(false), 4000);
-    }, 2000);
+      form.reset();
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err: any) {
+      setError(err.message || "Failed to send message. Please check your connection.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -103,6 +126,16 @@ export default function Contact() {
                 placeholder="Tell me about your project..."
               />
             </div>
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-amber-950/20 border-accent/20 text-accent-light rounded-xl border px-5 py-4 text-sm backdrop-blur-md"
+              >
+                <span className="font-mono text-xs tracking-wider uppercase text-accent block mb-1">Submission Error</span>
+                {error}
+              </motion.div>
+            )}
             <button
               type="submit"
               disabled={loading}

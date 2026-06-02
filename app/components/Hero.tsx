@@ -27,7 +27,11 @@ export default function Hero() {
   const avatarY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const scrollIndicatorOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.15],
+    [1, 0],
+  );
 
   function handleMouseMove({
     currentTarget,
@@ -59,7 +63,7 @@ export default function Hero() {
       <div className="bg-accent/3 absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]" />
 
       {/* Sticky content container */}
-      <div className="sticky top-0 flex h-[100dvh] md:h-screen flex-col items-center justify-center px-6">
+      <div className="sticky top-0 flex h-dvh md:h-screen flex-col items-center justify-center px-6">
         {/* Avatar — cinematic, scroll-linked */}
         <motion.div
           style={{ scale: avatarScale, opacity: avatarOpacity, y: avatarY }}
