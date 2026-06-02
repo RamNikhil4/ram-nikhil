@@ -87,8 +87,6 @@ export async function POST(request: Request) {
     const senderEmail = process.env.SENDER_EMAIL || "onboarding@brevo.com";
     const senderName = process.env.SENDER_NAME || "Portfolio Contact";
 
-    console.log(brevoApiKey);
-
     if (brevoApiKey) {
       try {
         // Load custom Midnight Champagne EJS email template
@@ -156,10 +154,6 @@ export async function POST(request: Request) {
           message: "Message saved locally, but email server error occurred.",
         });
       }
-    } else {
-      console.log(
-        "BREVO_API_KEY is not configured. Email notification skipped (saved locally).",
-      );
     }
 
     return NextResponse.json({

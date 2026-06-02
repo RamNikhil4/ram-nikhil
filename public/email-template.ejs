@@ -119,11 +119,11 @@
                       A visitor has left a response via your portfolio contact console. Here are the processed message details:
                     </p>
 
-                    <!-- INFO GRID (SENDER / EMAIL) -->
+                    <!-- INFO BLOCK (SENDER & EMAIL STACKED) -->
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 24px;">
+                      <!-- Sender Name -->
                       <tr>
-                        <!-- Sender Name Column -->
-                        <td width="50%" class="stack-column" style="vertical-align: top; padding-right: 10px; padding-bottom: 16px;">
+                        <td style="padding-bottom: 16px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                               <td class="field-padding-mobile" style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(251, 191, 36, 0.08); border-radius: 12px; padding: 18px 20px;">
@@ -133,13 +133,15 @@
                             </tr>
                           </table>
                         </td>
-                        <!-- Sender Email Column -->
-                        <td width="50%" class="stack-column" style="vertical-align: top; padding-left: 10px; padding-bottom: 16px;">
+                      </tr>
+                      <!-- Sender Email -->
+                      <tr>
+                        <td style="padding-bottom: 16px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                               <td class="field-padding-mobile" style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(251, 191, 36, 0.08); border-radius: 12px; padding: 18px 20px;">
                                 <span style="font-family: 'Geist Mono', monospace; font-size: 10px; color: #78716c; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; display: block; margin-bottom: 6px;">Email Address</span>
-                                <a href="mailto:<%= sender_email %>" class="link-hover" style="font-family: 'Inter', sans-serif; font-size: 16px; color: #fbbf24; font-weight: 600; text-decoration: none; letter-spacing: -0.2px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><%= sender_email %></a>
+                                <a href="mailto:<%= sender_email %>" class="link-hover" style="font-family: 'Inter', sans-serif; font-size: 16px; color: #fbbf24; font-weight: 600; text-decoration: none; letter-spacing: -0.2px; display: block;"><%= sender_email %></a>
                               </td>
                             </tr>
                           </table>
