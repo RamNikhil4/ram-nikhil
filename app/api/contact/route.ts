@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Please fill out all fields." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: "Please provide a valid email address." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     try {
       // Ensure the "data" directory exists
       await fs.mkdir(path.dirname(MESSAGES_FILE_PATH), { recursive: true });
-      
+
       let existingSubmissions = [];
       try {
         const fileContent = await fs.readFile(MESSAGES_FILE_PATH, "utf-8");
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       await fs.writeFile(
         MESSAGES_FILE_PATH,
         JSON.stringify(existingSubmissions, null, 2),
-        "utf-8"
+        "utf-8",
       );
     } catch (dbErr) {
       console.error("Local DB storage error:", dbErr);
@@ -87,10 +87,16 @@ export async function POST(request: Request) {
     const senderEmail = process.env.SENDER_EMAIL || "onboarding@brevo.com";
     const senderName = process.env.SENDER_NAME || "Portfolio Contact";
 
+    console.log(brevoApiKey);
+
     if (brevoApiKey) {
       try {
         // Load custom Midnight Champagne EJS email template
-        const templatePath = path.join(process.cwd(), "public", "email-template.ejs");
+        const templatePath = path.join(
+          process.cwd(),
+          "public",
+          "email-template.ejs",
+        );
         const templateContent = await fs.readFile(templatePath, "utf-8");
 
         const escapedMessage = escapeHtml(message).replace(/\n/g, "<br>");
@@ -105,32 +111,35 @@ export async function POST(request: Request) {
         });
 
         // Send request using native fetch API to Brevo SMTP endpoint
-        const emailResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
-          method: "POST",
-          headers: {
-            "accept": "application/json",
-            "content-type": "application/json",
-            "api-key": brevoApiKey,
+        const emailResponse = await fetch(
+          "https://api.brevo.com/v3/smtp/email",
+          {
+            method: "POST",
+            headers: {
+              accept: "application/json",
+              "content-type": "application/json",
+              "api-key": brevoApiKey,
+            },
+            body: JSON.stringify({
+              sender: {
+                name: senderName,
+                email: senderEmail,
+              },
+              to: [
+                {
+                  email: toEmail,
+                  name: toName,
+                },
+              ],
+              replyTo: {
+                email: email,
+                name: name,
+              },
+              subject: `✦ Portfolio Contact: Message from ${name}`,
+              htmlContent: htmlContent,
+            }),
           },
-          body: JSON.stringify({
-            sender: {
-              name: senderName,
-              email: senderEmail,
-            },
-            to: [
-              {
-                email: toEmail,
-                name: toName,
-              }
-            ],
-            replyTo: {
-              email: email,
-              name: name,
-            },
-            subject: `✦ Portfolio Contact: Message from ${name}`,
-            htmlContent: htmlContent,
-          }),
-        });
+        );
 
         if (!emailResponse.ok) {
           const errorData = await emailResponse.json();
@@ -148,7 +157,9 @@ export async function POST(request: Request) {
         });
       }
     } else {
-      console.log("BREVO_API_KEY is not configured. Email notification skipped (saved locally).");
+      console.log(
+        "BREVO_API_KEY is not configured. Email notification skipped (saved locally).",
+      );
     }
 
     return NextResponse.json({
@@ -159,7 +170,7 @@ export async function POST(request: Request) {
     console.error("Contact API Server Error:", error);
     return NextResponse.json(
       { error: "Internal server error. Please try again later." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
